@@ -53,6 +53,7 @@ export default function WidgetLg({ orders }) {
     message.error("Order don't delete");
   };
   const handleClickDelete = async () => {
+    res.mutate();
     message.success("You deleted order successfully");
   };
   const columns = [
