@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./pages/login";
 import Home from "./pages/Home";
 import UserList from "./pages/UserList";
 import ErrorPage from "./pages/Error";
