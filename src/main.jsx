@@ -12,8 +12,8 @@ import EditProduct from "./pages/product/Edit";
 
 import { ReactQueryDevtools } from "react-query/devtools";
 import DiscountList from "./pages/Discounts";
-import NewDiscount from "./pages/Discounts/create";
-import EditDiscount from "./pages/Discounts/edit";
+import NewDiscount from "./pages/discounts/Create";
+import EditDiscount from "./pages/discounts/Edit";
 import Comment from "./pages/Comments";
 
 const queryClient = new QueryClient({
