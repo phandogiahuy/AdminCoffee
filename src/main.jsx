@@ -9,12 +9,11 @@ import ErrorPage from "./pages/error";
 import ProductList from "./pages/productList";
 import NewProduct from "./pages/newProduct";
 import EditProduct from "./pages/product/Edit";
-
-import { ReactQueryDevtools } from "react-query/devtools";
 import DiscountList from "./pages/Discounts";
-import NewDiscount from "./pages/discounts/Create";
-import EditDiscount from "./pages/discounts/Edit";
+import NewDiscount from "./pages/discounts/Create/index";
+import EditDiscount from "./pages/discounts/Edit/index";
 import Comment from "./pages/Comments";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const queryClient = new QueryClient({
   defaultOptions: {
