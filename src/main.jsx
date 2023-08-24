@@ -10,10 +10,11 @@ import ProductList from "./pages/productList";
 import NewProduct from "./pages/newProduct";
 import EditProduct from "./pages/product/Edit";
 import DiscountList from "./pages/Discounts";
-import NewDiscount from "./pages/discounts/Create/index";
-import EditDiscount from "./pages/discounts/Edit/index";
+
 import Comment from "./pages/Comments";
 import { ReactQueryDevtools } from "react-query/devtools";
+import NewDiscount from "./pages/Discounts/Create";
+import EditDiscount from "./pages/Discounts/Edit";
 
 const queryClient = new QueryClient({
   defaultOptions: {
