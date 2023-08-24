@@ -3,7 +3,7 @@ import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/login";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import UserList from "./pages/UserList";
 import ErrorPage from "./pages/Error";
 import ProductList from "./pages/ProductList";
