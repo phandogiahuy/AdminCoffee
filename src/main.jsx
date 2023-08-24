@@ -12,7 +12,7 @@ import EditProduct from "./pages/product/Edit";
 
 import { ReactQueryDevtools } from "react-query/devtools";
 import DiscountList from "./pages/Discounts";
-import NewDiscount from "./pages/discounts/Create";
+import NewDiscount from "./pages/discounts/create";
 import EditDiscount from "./pages/discounts/Edit";
 import Comment from "./pages/Comments";
 
