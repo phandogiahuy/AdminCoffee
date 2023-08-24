@@ -8,7 +8,7 @@ import UserList from "./pages/userList";
 import ErrorPage from "./pages/error";
 import ProductList from "./pages/productList";
 import NewProduct from "./pages/newProduct";
-import EditProduct from "./pages/product/edit";
+import EditProduct from "./pages/product/Edit";
 
 import { ReactQueryDevtools } from "react-query/devtools";
 import DiscountList from "./pages/discounts";
