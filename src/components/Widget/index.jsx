@@ -29,6 +29,7 @@ import { useDeleteOrderById } from "../../hooks/Mutation/Order/useDeleteOrderByI
 const token = localStorage.getItem("token");
 
 export default function WidgetLg({ orders }) {
+  console.log(orders);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [content, setContent] = useState();
   const { mutate } = useUpdateOrder();
@@ -197,14 +198,25 @@ export default function WidgetLg({ orders }) {
             </Button>
           </Popconfirm>
           <Table bordered columns={columns} dataSource={orders} />
-          <Modal
-            title="Order"
-            open={isModalOpen}
-            onOk={handleOk}
-            onCancel={handleCancel}
-          >
-            <Content order={content} />
-          </Modal>
+          {orders[0].status != "success" ? (
+            <Modal
+              title="Order"
+              open={isModalOpen}
+              onCancel={handleCancel}
+              onOk={handleOk}
+            >
+              <Content order={content} />
+            </Modal>
+          ) : (
+            <Modal
+              title="Order"
+              open={isModalOpen}
+              onCancel={handleCancel}
+              onOk={handleCancel}
+            >
+              <Content order={content} />
+            </Modal>
+          )}
         </>
       )}
     </div>
