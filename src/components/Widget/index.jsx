@@ -17,7 +17,7 @@ import {
   MinusCircleOutlined,
   PlusCircleTwoTone,
 } from "@ant-design/icons";
-import Content from "../contentTransaction";
+import Content from "../Transaction";
 import { useState } from "react";
 import { useUpdateOrder } from "../../hooks/Mutation/Order/useUpdateOrder";
 import { useDeleteOrder } from "../../hooks/Mutation/Order/useDeleteOrder";

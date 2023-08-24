@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./components/sidebar/Sidebar";
+import Sidebar from "./components/SideBar/Sidebar";
 import "./App.css";
 
 import { Layout, Space } from "antd";
-import { Topbar } from "./components/topbar/Topbar";
+import { Topbar } from "./components/TopBar";
 const { Header, Sider, Content } = Layout;
 
 const App = () => {
