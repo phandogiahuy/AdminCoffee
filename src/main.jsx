@@ -11,7 +11,7 @@ import NewProduct from "./pages/newProduct";
 import EditProduct from "./pages/product/Edit";
 
 import { ReactQueryDevtools } from "react-query/devtools";
-import DiscountList from "./pages/discounts";
+import DiscountList from "./pages/Discounts";
 import NewDiscount from "./pages/discounts/create";
 import EditDiscount from "./pages/discounts/edit";
 import Comment from "./pages/Comments";
