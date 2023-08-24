@@ -4,16 +4,16 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/login";
 import Home from "./pages/home";
-import UserList from "./pages/UserList";
-import ErrorPage from "./pages/Error";
-import ProductList from "./pages/ProductList";
-import NewProduct from "./pages/NewProduct";
-import EditProduct from "./pages/Product/Edit";
+import UserList from "./pages/userList";
+import ErrorPage from "./pages/error";
+import ProductList from "./pages/productList";
+import NewProduct from "./pages/newProduct";
+import EditProduct from "./pages/product/edit";
 
 import { ReactQueryDevtools } from "react-query/devtools";
-import DiscountList from "./pages/Discounts";
-import NewDiscount from "./pages/Discounts/Create";
-import EditDiscount from "./pages/Discounts/Edit";
+import DiscountList from "./pages/discounts";
+import NewDiscount from "./pages/discounts/create";
+import EditDiscount from "./pages/discounts/edit";
 import Comment from "./pages/Comments";
 
 const queryClient = new QueryClient({
