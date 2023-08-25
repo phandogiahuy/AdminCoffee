@@ -29,7 +29,7 @@ import { useDeleteOrderById } from "../../hooks/Mutation/Order/useDeleteOrderByI
 const token = localStorage.getItem("token");
 
 export default function WidgetLg({ orders }) {
-  console.log(orders);
+  const [filteredOrders, setFilteredOrders] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [content, setContent] = useState();
   const { mutate } = useUpdateOrder();
@@ -54,8 +54,12 @@ export default function WidgetLg({ orders }) {
     message.error("Order don't delete");
   };
   const handleClickDelete = async () => {
-    res.mutate();
-    message.success("You deleted order successfully");
+    // res.mutate();
+    const notSuccessOrders = orders.filter(
+      (order) => order.status != "success"
+    );
+    setFilteredOrders(notSuccessOrders); // Update the filteredOrders state
+    message.success("You filter order successfully");
   };
   const columns = [
     {
@@ -164,11 +168,13 @@ export default function WidgetLg({ orders }) {
   const handleFinish = async (id) => {
     mutate({ status: "success", id });
   };
+  const ordersToDisplay = filteredOrders.length > 0 ? filteredOrders : orders;
+
   return (
     <div style={{ flex: 1, padding: "5px" }}>
       <h1>Transaction</h1>
 
-      {orders.length == 0 ? (
+      {ordersToDisplay.length == 0 ? (
         <div>
           <Empty />
         </div>
@@ -176,7 +182,7 @@ export default function WidgetLg({ orders }) {
         <>
           <Popconfirm
             title="Delete product"
-            description="Are you sure to delete this order, please check carefully because of no return?"
+            description="Are you sure to filter orders, please check carefully because of no return?"
             onConfirm={handleClickDelete}
             onCancel={cancel}
             okText="Yes"
@@ -194,11 +200,11 @@ export default function WidgetLg({ orders }) {
               }}
               icon={<MinusCircleOutlined />}
             >
-              Delete Success Transaction
+              Filter Success Transaction
             </Button>
           </Popconfirm>
-          <Table bordered columns={columns} dataSource={orders} />
-          {orders[0].status != "success" ? (
+          <Table bordered columns={columns} dataSource={ordersToDisplay} />
+          {ordersToDisplay[0].status != "success" ? (
             <Modal
               title="Order"
               open={isModalOpen}
