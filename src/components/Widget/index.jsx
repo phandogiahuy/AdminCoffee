@@ -31,7 +31,7 @@ const token = localStorage.getItem("token");
 export default function WidgetLg({ orders }) {
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [content, setContent] = useState();
+  const [content, setContent] = useState("");
   const { mutate } = useUpdateOrder();
   const revenue = useRevenue();
   const res = useDeleteOrder();
@@ -42,8 +42,8 @@ export default function WidgetLg({ orders }) {
   };
   const handleOk = () => {
     mutate({ status: "accepted", id });
-
     // revenue.mutate({ orders: content });
+    // setFilteredOrders([]);
     setIsModalOpen(false);
   };
   const handleCancel = () => {
@@ -54,7 +54,6 @@ export default function WidgetLg({ orders }) {
     message.error("Order don't delete");
   };
   const handleClickDelete = async () => {
-    // res.mutate();
     const notSuccessOrders = orders.filter(
       (order) => order.status != "success"
     );
@@ -132,20 +131,7 @@ export default function WidgetLg({ orders }) {
             >
               Show Transaction
             </Button>
-            {order.status === "pending" && (
-              <Popconfirm
-                title="Delete product"
-                description="Are you sure to delete this order, It cannot return"
-                onConfirm={() => handleDelete(order._id)}
-                onCancel={cancel}
-                okText="Yes"
-                cancelText="No"
-              >
-                <Button type="primary" style={{ backgroundColor: " #9b4f88" }}>
-                  Deleted
-                </Button>
-              </Popconfirm>
-            )}
+
             {order.status === "accepted" && (
               <Button
                 type="primary"
@@ -157,6 +143,24 @@ export default function WidgetLg({ orders }) {
                 Finished
               </Button>
             )}
+            {order.status === "pending" ||
+              (order.status === "accepted" && (
+                <Popconfirm
+                  title="Delete product"
+                  description="Are you sure to delete this order, It cannot return"
+                  onConfirm={() => handleDelete(order._id)}
+                  onCancel={cancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button
+                    type="primary"
+                    style={{ backgroundColor: " #ff4d4f", marginLeft: "40px" }}
+                  >
+                    Deleted
+                  </Button>
+                </Popconfirm>
+              ))}
           </div>
         );
       },
@@ -169,7 +173,6 @@ export default function WidgetLg({ orders }) {
     mutate({ status: "success", id });
   };
   const ordersToDisplay = filteredOrders.length > 0 ? filteredOrders : orders;
-
   return (
     <div style={{ flex: 1, padding: "5px" }}>
       <h1>Transaction</h1>
@@ -187,24 +190,9 @@ export default function WidgetLg({ orders }) {
             onCancel={cancel}
             okText="Yes"
             cancelText="No"
-          >
-            <Button
-              size="larger"
-              style={{
-                backgroundColor: "#4ddb1d",
-                fontSize: "20px",
-                width: "25%",
-                height: "50px",
-                padding: "10px",
-                marginBottom: "10px",
-              }}
-              icon={<MinusCircleOutlined />}
-            >
-              Filter Success Transaction
-            </Button>
-          </Popconfirm>
+          ></Popconfirm>
           <Table bordered columns={columns} dataSource={ordersToDisplay} />
-          {ordersToDisplay[0].status != "success" ? (
+          {content.status != "success" ? (
             <Modal
               title="Order"
               open={isModalOpen}
@@ -228,3 +216,17 @@ export default function WidgetLg({ orders }) {
     </div>
   );
 }
+//  <Button
+// size="larger"
+// style={{
+//   backgroundColor: "#4ddb1d",
+//   fontSize: "20px",
+//   width: "25%",
+//   height: "50px",
+//   padding: "10px",
+//   marginBottom: "10px",
+// }}
+// icon={<MinusCircleOutlined />}
+// >
+// Filter Success Transaction
+// </Button>
