@@ -143,24 +143,23 @@ export default function WidgetLg({ orders }) {
                 Finished
               </Button>
             )}
-            {order.status === "pending" ||
-              (order.status === "accepted" && (
-                <Popconfirm
-                  title="Delete product"
-                  description="Are you sure to delete this order, It cannot return"
-                  onConfirm={() => handleDelete(order._id)}
-                  onCancel={cancel}
-                  okText="Yes"
-                  cancelText="No"
+            {(order.status === "pending" || order.status === "accepted") && (
+              <Popconfirm
+                title="Delete product"
+                description="Are you sure to delete this order, It cannot return"
+                onConfirm={() => handleDelete(order._id)}
+                onCancel={cancel}
+                okText="Yes"
+                cancelText="No"
+              >
+                <Button
+                  type="primary"
+                  style={{ backgroundColor: " #ff4d4f", marginLeft: "40px" }}
                 >
-                  <Button
-                    type="primary"
-                    style={{ backgroundColor: " #ff4d4f", marginLeft: "40px" }}
-                  >
-                    Deleted
-                  </Button>
-                </Popconfirm>
-              ))}
+                  Deleted
+                </Button>
+              </Popconfirm>
+            )}
           </div>
         );
       },
